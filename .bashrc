@@ -2,7 +2,8 @@
 # ~/.bashrc
 #
 # Customized shell configuration
-# by Norrius, 2014
+# based on default Linux Mint .bashrc
+# by Norrius, 2014-2017
 #
 
 # If not running interactively, don't do anything
@@ -36,6 +37,7 @@ fi
 alias o='xdg-open'
 alias ls='ls --color=auto'
 alias ll='ls -l --color=auto'
+alias la='ls -al --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -47,25 +49,29 @@ alias f='ps -aef | grep -v $$ | grep'
 #export WORKON_HOME=$HOME/.virtualenvs
 #source /usr/local/bin/virtualenvwrapper.sh
 
+function catls {
+    [[ -f "$1" ]] && cat $@ || ls --color=auto $@
+}
+
+alias ls='catls'
+alias cat='catls'
+
 function g+++ {
     if g++ -std=c++11 -O2 -Wall -Wextra -pedantic -Wshadow -Wfloat-equal -Wconversion -Wlogical-op -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -lmcheck -D_FORTIFY_SOURCE=2 -fsanitize=address  -fstack-protector -DFTEST -o `echo $1 | sed s/.cpp//` "$@"
     then echo "ok"
     fi
 }
 alias g++11='g++ -std=c++11'
-alias idea='JAVA_HOME=/usr/lib/jvm/jdk1.8.0_45/  /home/norrius/Programs/idea-IU-143.1821.5/bin/idea.sh'
+#alias idea='JAVA_HOME=/usr/lib/jvm/jdk1.8.0_45/  /home/norrius/Programs/idea-IU-143.1821.5/bin/idea.sh'
+alias mashinka='cd /home/norrius/Apps/Cloud/Uni/ML/2; PATH=/home/norrius/Programs/anaconda3/bin:$PATH jupyter notebook'
 
 alias lastmod='find $1 -type f -exec stat --format "%Y :%y %n" {} \; | sort -nr | cut -d: -f2-'
+alias fucking='sudo '
 
 function swapsuckers {
     for file in /proc/*/status ; do awk '/VmSwap|Name/{printf $2 " " $3}END{ print ""}' $file; done | sort -k 2 -n -r | less
 }
-
-alias vpn='sshuttle -r parallel4_04@mipt60.dc.phystech.edu:222 0.0.0.0/0 -vv'
-
-#alias wtf=man
-alias fucking='sudo '
-#alias doit='$(history -p !!) '
+#alias vpn='sshuttle -r parallel4_04@mipt60.dc.phystech.edu:222 0.0.0.0/0 -vv'
 
 # Programmable completion
 
@@ -77,9 +83,8 @@ fi
 
 # Template for incliduing additional config files
 
-#if [ -f ~/.bash_extra ]; then
-#    . ~/.bash_extra
-#fi
+if [ -f ~/.bash_extra ]; then
+    . ~/.bash_extra
+fi
 
-alias mashinka='cd /home/norrius/Apps/Cloud/Uni/ML/2; PATH=/home/norrius/Programs/anaconda3/bin:$PATH jupyter notebook'
 
