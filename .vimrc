@@ -28,3 +28,7 @@ set ai "Auto indent
 set si "Smart indent
 
 imap jk <Esc>
+
+"Need vim-gtk to work with system clipboard
+vnoremap <C-c> "+y
+
