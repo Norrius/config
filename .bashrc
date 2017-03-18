@@ -21,6 +21,9 @@ HISTIGNORE='history'	# ignored patterns
 HISTCONTROL=ignoreboth	# ignore lines matching previous entry, ignore lines beginning with space
 PROMPT_COMMAND='history -a' # store history immediately
 
+# Color fix for GNU Screen
+export TERM=xterm-256color
+
 # Shell prompt
 
 # PS1='[\u@\h \W]\$ ' # default Arch prompt
