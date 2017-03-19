@@ -37,6 +37,8 @@ fi
 
 # Alias definitions
 
+alias .git='/usr/bin/git --git-dir=$HOME/.dot.git --work-tree=$HOME'
+
 alias o='xdg-open'
 alias ls='ls --color=auto'
 alias ll='ls -l --color=auto'
