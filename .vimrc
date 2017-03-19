@@ -1,3 +1,23 @@
+" Vundle
+set nocompatible              " be iMproved, required
+filetype off                  " required
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" Run :PluginInstall to install
+
+Plugin 'vim-airline/vim-airline'
+
+" Vundle
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" vim-airline config
+set laststatus=2
+"let g:airline_section_y=airline#section#create_right(['ffenc'])
+let g:airline_section_z=airline#section#create_right(['%3l:%-2v'])
+"let g:airline_powerline_fonts = 1
+
 " Wrap properly at line end
 set whichwrap=b,s,<,>,[,],h,l
 set backspace=eol,start,indent
@@ -43,8 +63,8 @@ set mouse=a
 
 " Split navigation
 
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
 
