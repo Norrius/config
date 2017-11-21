@@ -1,1 +1,8 @@
 .dot.git
+
+.idea/
+
+*~
+
+sandbox.py
+
