@@ -24,6 +24,10 @@ PROMPT_COMMAND='history -a' # store history immediately
 # Color fix for GNU Screen
 export TERM=xterm-256color
 
+# locale settings
+
+export LC_TIME=en_GB.utf8
+
 # Shell prompt
 
 # PS1='[\u@\h \W]\$ ' # default Arch prompt
@@ -58,8 +62,8 @@ function catls {
     [[ -f "$1" ]] && cat $@ || ls --color=auto $@
 }
 
-alias ls='catls'
-alias cat='catls'
+#alias ls='catls'
+#alias cat='catls'
 
 function g+++ {
     if g++ -std=c++11 -O2 -Wall -Wextra -pedantic -Wshadow -Wfloat-equal -Wconversion -Wlogical-op -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -lmcheck -D_FORTIFY_SOURCE=2 -fsanitize=address  -fstack-protector -DFTEST -o `echo $1 | sed s/.cpp//` "$@"
@@ -67,8 +71,6 @@ function g+++ {
     fi
 }
 alias g++11='g++ -std=c++11'
-#alias idea='JAVA_HOME=/usr/lib/jvm/jdk1.8.0_45/  /home/norrius/Programs/idea-IU-143.1821.5/bin/idea.sh'
-alias mashinka='cd /home/norrius/Apps/Cloud/Uni/ML/2; PATH=/home/norrius/Programs/anaconda3/bin:$PATH jupyter notebook'
 
 alias lastmod='find $1 -type f -exec stat --format "%Y :%y %n" {} \; | sort -nr | cut -d: -f2-'
 alias fucking='sudo '
@@ -76,7 +78,6 @@ alias fucking='sudo '
 function swapsuckers {
     for file in /proc/*/status ; do awk '/VmSwap|Name/{printf $2 " " $3}END{ print ""}' $file; done | sort -k 2 -n -r | less
 }
-#alias vpn='sshuttle -r parallel4_04@mipt60.dc.phystech.edu:222 0.0.0.0/0 -vv'
 
 # Programmable completion
 
@@ -91,5 +92,4 @@ fi
 if [ -f ~/.bash_extra ]; then
     . ~/.bash_extra
 fi
-
 
