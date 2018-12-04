@@ -43,27 +43,16 @@ fi
 
 alias .git='/usr/bin/git --git-dir=$HOME/.dot.git --work-tree=$HOME'
 
+alias ssh-add='ssh-add -t 15h'
+
 alias o='xdg-open'
 alias ls='ls --color=auto'
-alias ll='ls -l --color=auto'
-alias la='ls -al --color=auto'
+alias ll='ls -lh --color=auto'
+alias la='ls -alh --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias f='ps -aef | grep -v $$ | grep'
-
-# virtualenv and virtualenvwrapper
-#export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-#export WORKON_HOME=$HOME/.virtualenvs
-#source /usr/local/bin/virtualenvwrapper.sh
-
-function catls {
-    [[ -f "$1" ]] && cat $@ || ls --color=auto $@
-}
-
-#alias ls='catls'
-#alias cat='catls'
 
 function g+++ {
     if g++ -std=c++11 -O2 -Wall -Wextra -pedantic -Wshadow -Wfloat-equal -Wconversion -Wlogical-op -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -lmcheck -D_FORTIFY_SOURCE=2 -fsanitize=address  -fstack-protector -DFTEST -o `echo $1 | sed s/.cpp//` "$@"
@@ -72,9 +61,20 @@ function g+++ {
 }
 alias g++11='g++ -std=c++11'
 
-alias lastmod='find $1 -type f -exec stat --format "%Y :%y %n" {} \; | sort -nr | cut -d: -f2-'
-alias fucking='sudo '
+alias fucking='sudo'
+alias up='docker-compose pull && docker-compose up --build'
+alias act='source venv/bin/activate'
 
+# Git aliases
+alias go='git checkout'
+alias gs='git status'
+alias gd='git diff'
+alias gc='git commit'
+alias gp='git push'
+
+# Monitoring tools
+alias f='ps -aef | grep -v $$ | grep'
+alias lastmod='find $1 -type f -exec stat --format "%Y :%y %n" {} \; | sort -nr | cut -d: -f2-'
 function swapsuckers {
     for file in /proc/*/status ; do awk '/VmSwap|Name/{printf $2 " " $3}END{ print ""}' $file; done | sort -k 2 -n -r | less
 }
