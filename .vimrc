@@ -17,10 +17,14 @@ set laststatus=2
 "let g:airline_section_y=airline#section#create_right(['ffenc'])
 let g:airline_section_z=airline#section#create_right(['%3l:%-2v'])
 "let g:airline_powerline_fonts = 1
+let g:airline#extensions#whitespace#checks = ['indent', 'long', 'mixed-indent-file']
 
 " Wrap properly at line end
 set whichwrap=b,s,<,>,[,],h,l
 set backspace=eol,start,indent
+
+" Don't screw up terminal pasting (vim 8)
+set t_BE=
 
 " Highlight search results
 set hlsearch
@@ -67,4 +71,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
+
+" Folds
+set foldcolumn=1
+autocmd Syntax c,cpp,vim,xml,html,xhtml setlocal foldmethod=syntax
+autocmd Syntax c,cpp,vim,xml,html,xhtml,perl normal zR
 
