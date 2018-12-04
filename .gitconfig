@@ -1,0 +1,17 @@
+[user]
+	name = Andrey Zakharov
+	email = andrey.v.zakharov@yandex.ru
+	signingkey = EB91151F
+[push]
+	default = simple
+[alias]
+	pushf = push --force-with-lease
+[core]
+	excludesfile = ~/.gitignore
+	editor = vim
+[gpg]
+	program = gpg2
+[commit]
+	gpgsign = true
+[merge]
+	tool = meld
