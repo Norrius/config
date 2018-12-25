@@ -3,7 +3,7 @@
 #
 # Customized shell configuration
 # based on default Linux Mint .bashrc
-# by Norrius, 2014-2017
+# by Norrius, 2014-2018
 #
 
 # If not running interactively, don't do anything
@@ -41,10 +41,6 @@ fi
 
 # Alias definitions
 
-alias .git='/usr/bin/git --git-dir=$HOME/.dot.git --work-tree=$HOME'
-
-alias ssh-add='ssh-add -t 15h'
-
 alias o='xdg-open'
 alias ls='ls --color=auto'
 alias ll='ls -lh --color=auto'
@@ -53,6 +49,11 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+# Navigation up the file tree
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 
 function g+++ {
     if g++ -std=c++11 -O2 -Wall -Wextra -pedantic -Wshadow -Wfloat-equal -Wconversion -Wlogical-op -Wcast-qual -Wcast-align -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -lmcheck -D_FORTIFY_SOURCE=2 -fsanitize=address  -fstack-protector -DFTEST -o `echo $1 | sed s/.cpp//` "$@"
@@ -70,7 +71,11 @@ alias go='git checkout'
 alias gs='git status'
 alias gd='git diff'
 alias gc='git commit'
-alias gp='git push'
+alias gp='git pull'
+
+alias .git='/usr/bin/git --git-dir=$HOME/.dot.git --work-tree=$HOME'
+
+alias ssh-add='ssh-add -t 15h'
 
 # Monitoring tools
 alias f='ps -aef | grep -v $$ | grep'
