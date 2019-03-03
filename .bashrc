@@ -65,6 +65,7 @@ alias g++11='g++ -std=c++11'
 alias fucking='sudo'
 alias up='docker-compose pull && docker-compose up --build'
 alias act='source venv/bin/activate'
+alias psqll='psql -h localhost -U postgres'
 
 # Git aliases
 alias go='git checkout'
